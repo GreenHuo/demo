@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.larch.mysql.mapper.UserMapper" >
+    <resultMap id="userResultMap" type="com.larch.mysql.entity.User" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR"/>
+        <result column="nick_name" property="nickName" jdbcType="VARCHAR" />
+        <result column="create_time" property="createTime" javaType="DATE"/>
+        <result column="update_time" property="updateTime" javaType="DATE"/>
+    </resultMap>
+
+    <sql id="user_Column_List" >
+        id, username, nick_name, sex, create_time, update_time
+    </sql>
+
+    <select id="getAll" resultMap="userResultMap">
+        select
+        <include refid="user_Column_List"></include>
+        from users
+    </select>
+
+    <insert id="save" parameterType="com.larch.mysql.entity.User">
+        INSERT into users
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="nickName != null">
+                nick_name,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null">
+                #{id},
+            </if>
+            <if test="username != null">
+                #{username},
+            </if>
+            <if test="sex != null">
+                #{sex},
+            </if>
+            <if test="nickName != null">
+                #{nickName},
+            </if>
+            <if test="createTime != null">
+                #{createTime},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime},
+            </if>
+        </trim>
+    </insert>
+
+
+</mapper>

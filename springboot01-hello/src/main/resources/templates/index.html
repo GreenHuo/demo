@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form>
+    <input type="text" name="name" id="test" />
+    <input type="button" name="button" value="获取" onclick="print()" />
+</form>
+<h1 th:text="${title}">Hello World</h1>
+<script language="javascript">
+    function print(){
+        var a=document.getElementById("test").value;
+        alert(a);
+
+        var CHANGE_REASON = {
+            "24" : "24-1-资源成本增加",
+            "38" : "38-0-供应商备注",
+            "37" : "37-0-赔偿供应商",
+            "36" : "36-0-领队平摊、升舱",
+            "34" : "34-0-供应商核损减免",
+            "33" : "33-1-供应商退还费用",
+            "32" : "32-1-供应商名称变更",
+            "31" : "31-0-汇率变更",
+            "30" : "30-1-系统问题",
+            "29" : "29-1-人工失误",
+            "28" : "28-1-同行竞价",
+            "26" : "26-1-优惠项",
+            "25" : "25-0-资源成本减少",
+            "39" : "39-1-签约后订单增补项"
+        };
+        var changereasonElement = CHANGE_REASON["44"];
+        alert(changereasonElement);
+    }
+</script>
+<h1><a href="http://www.thymeleaf.org"  th:href="@{http://localhost:8080/demo/test}" th:text="${atext}">Thymeleaf</a></h1>
+</body>
+</html>
